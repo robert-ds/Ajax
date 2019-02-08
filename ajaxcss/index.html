@@ -1,0 +1,53 @@
+<html lang="es">
+    <head>
+        <title>Css Dinámico</title>
+        <meta charset="utf-16" />
+    </head>
+    <script type="text/javascript">
+        function refresca()
+        {
+            var xmlhttp;
+            //Verificamos la Compatibilidad entre navegadores
+            if(window.XMLHttpRequest)
+            {
+                xmlhttp = new XMLHttpRequest();
+            }
+            else
+            {
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+
+            //Creamos la funcion que preformateara la hora del reloj
+            var fetch_unix_timestamp = "";
+            fetch_unix_timestamp = function()
+            {
+                return parseInt( new Date().getTime().toString().substring(0, 10) )
+            }
+            var timestamp = fetch_unix_timestamp();
+
+            //Verificamos el estado del servidor
+            xmlhttp.onreadystatechange = function()
+            {
+                if( xmlhttp.readyState == 4 )
+                {
+                    document.getElementById("reloj").innerHTML = xmlhttp.responseText;
+                    setTimeout('refresca()',1000);
+                                    }
+            }
+            xmlhttp.open("GET","reloj.php"+"?t="+timestamp,true);
+            xmlhttp.send(null);
+        }
+
+        window.onload = function startrefresh()
+        {
+            setTimeout('refresca',2000);
+        }
+    </script>
+<body>
+        <div id="reloj">
+            <script type="text/javascript">
+                refresca();
+            </script>
+        </div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>XML con AJAX</title>
+</head>
+<body>
+  <script type="text/javascript">
+      function cargaXML()
+      {
+        var text, x, i;
+        var conexion;
+
+        if(window.XMLHttpRequest)
+        {
+          conexion = new XMLHttpRequest();
+
+        }else
+        {
+          conexion = ActiveXObeject("Microsoft.XMLHTTP");
+        }
+
+        conexion.onreadystatechange = function()
+        {
+          if(conexion.readyState == 4 && conexion.status == 200)
+          {
+            xmlDoc = conexion.responseXML;
+            text = "<table>";
+            x = xmlDoc.getElementsByTagName("titulo");
+            artista = xmlDoc.getElementsByTagName("artista");
+            pais = xmlDoc.getElementsByTagName("pais");
+            firma = xmlDoc.getElementsByTagName("firma");
+            precio = xmlDoc.getElementsByTagName("precio");
+            anio = xmlDoc.getElementsByTagName("anio");
+
+            for( i = 0; i < x.length; i++ )
+            {
+              text = text + "<tr><td>" + x[i].childNodes[0].nodeValue + "</td><td>" +
+              artista[i].childNodes[0].nodeValue + "</td><td>" +
+              pais[i].childNodes[0].nodeValue + "</td><td>" +
+              firma[i].childNodes[0].nodeValue + "</td><td>" +
+              precio[i].childNodes[0].nodeValue + "</td><td>" +
+              anio[i].childNodes[0].nodeValue + "</td></tr>";
+            }
+            document.getElementById("myDiv").innerHTML = text;
+          }
+        }
+        conexion.open("GET", "discoteca.xml", true);
+        conexion.send();
+      }
+  </script>
+
+<h1>Mi Colección</h1>
+<div id="myDiv"></div>
+
+<button type="button" onclick="cargaXML()">Tomar mi Colección</button>
+</body>
+</html>

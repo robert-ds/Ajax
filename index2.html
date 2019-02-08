@@ -1,0 +1,43 @@
+<html>
+<head>
+  <title>Metodo Get</title>
+  <meta charset="utf-8" />
+
+  <script type="text/javascript">
+
+      function ajaxGet()
+      {
+        var conexion;
+        if(window.XMLHttpResquest)
+        {
+          conexion = new XMLHttpResquest();
+        }else
+        {
+          conexion = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+
+        conexion.onreadystatechange = function()
+        {
+            if( conexion.readyState == 4 && conexion.status == 200  )
+            {
+              document.getElementById("midiv").innerHTML = conexion.responseText;
+            }
+        }
+
+        conexion.open("GET","accion.php?variable=Soy una variable", true);
+        conexion.send();
+
+      }
+
+  </script>
+
+</head>
+
+<body>
+
+  <button type="button" onclick="ajaxGet()">Pulsar</button>
+  <div id="midiv">
+  </div>
+</body>
+
+</html>

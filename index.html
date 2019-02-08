@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <title>Estructura html</title>
+    <meta charset="utf-8" />
+
+  <script type="text/javascript">
+
+  /* funcion que desencadena el evento de click en el boton ejecutar */
+  function ejecutarAjax(){
+    var conexion;
+    //Establecemos el condicional para comprobar la compatibilidad entre navegadores
+     if(window.XMLHttpRequest)
+    {
+       conexion = new XMLHttpRequest();
+    }else{
+      conexion = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
+    conexion.onreadystatechange = function()
+    {
+      if( conexion.readyState == 4  && conexion.status == 200 )
+      {
+        /* Establesco donde se visualizaran el contenido del archivo.txt
+        en el documento html haciendo uso del id */
+        document.getElementById("midiv").innerHTML = conexion.responseText;
+      }
+    }
+
+    /*
+    Accedemos a la conexion con el metedo open y establemos el metodo
+    de envio, en este caso usamos el metodo get, como segundo parametro
+    el texto de un archivo externo, el tercer parametro es para estableces
+    la conecion asincrona con el servidor, true
+    */
+    conexion.open("GET","ejemplo.txt",true);
+    conexion.send();
+    }
+  </script>
+  </head>
+<body>
+
+<div id="midiv">
+  <button type="button"  onclick="ejecutarAjax()">Ejecutar</button>
+</div>
+
+
+</body>
+</html>

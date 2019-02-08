@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no" ?>
+
+<catalogo>
+  <cd>
+    <titulo>Hide your heart</titulo>
+    <artista>Bonie Tyler</artista>
+    <pais>UK</pais>
+    <firma>CBS Records</firma>
+    <precio>9.90</precio>
+    <anio>1988</anio>
+  </cd>
+
+    <cd>
+      <titulo>Hi for My</titulo>
+      <artista>Good BAd</artista>
+      <pais>Ucrania</pais>
+      <firma>MV Records</firma>
+      <precio>12</precio>
+      <anio>1992</anio>
+    </cd>
+
+      <cd>
+        <titulo>Circle Coll</titulo>
+        <artista>Tanis Majary</artista>
+        <pais>EE.UU</pais>
+        <firma>MTV </firma>
+        <precio>12.20</precio>
+        <anio>1982</anio>
+      </cd>
+
+        <cd>
+          <titulo>Hide your heart</titulo>
+          <artista>Bonie Tyler</artista>
+          <pais>UK</pais>
+          <firma>CBS Records</firma>
+          <precio>9.90</precio>
+          <anio>1988</anio>
+        </cd>
+
+          <cd>
+            <titulo>Circle Coll</titulo>
+            <artista>Tanis Majary</artista>
+            <pais>EE.UU</pais>
+            <firma>MTV </firma>
+            <precio>12.20</precio>
+            <anio>1982</anio>
+          </cd>
+          <cd>
+            <titulo>Hi for My</titulo>
+            <artista>Good BAd</artista>
+            <pais>Ucrania</pais>
+            <firma>MV Records</firma>
+            <precio>12</precio>
+            <anio>1992</anio>
+          </cd>
+</catalogo>

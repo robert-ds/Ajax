@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Validadción de formularios</title>
+        <meta charset="utf-8"/>
+
+        <script type="text/javascript">
+            function sugerencias(str)
+            {
+                xmlhttp;
+                //Si la Cadena Esta Vacia que no sea enviada ninguna Info!
+                 if( str.length == 0 )
+                 {
+                    document.getElementById("txtHint").innerHTML = "";
+                    return;
+                 }
+
+                if(window.XMLHttpRequest)
+                {
+                    xmlhttp = new XMLHttpRequest();
+                }else
+                {
+                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+
+                xmlhttp.onreadystatechange = function
+                {
+                    if(xmlhttp.readyState  == 4 && xmlhttp.status == 200)
+                    {
+                        document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
+                    }
+                }
+
+                xmlhttp.open("GET","validar.php?u="+str,true);
+                xmlhttp.send();
+
+            }
+
+
+        </script>
+    </head>
+<body>
+    <h3>Formulario de Acceso</h3>
+    <form action="">
+        <p>Elige un Usuario: <input type="text" id="text1" onkeyup="sugerencias(this.value)"
+        style="border:0px solid black;-webkit-box-shadow:0px 0px 15px rgba(0,0,0,0.5);background: rgba(255,255,255, 0.95);" />
+    </form>
+    <div id="txtHint"> </div></p>
+</body>    
+</html>

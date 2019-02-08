@@ -1,0 +1,51 @@
+<html>
+	<head>
+		<script type="text/javascript">
+		//funcion principal que desencadenara las sugerencias de nombres
+			function sugerencias(str){
+				var xmlhttp;
+
+		//Primer condicional que verificará cuando no alla nada escrito en el input		
+				if (str.length==0) {
+					document.getElementById("textHint").innerHTML="";
+					return;
+				}
+
+		//Estructura que controla y verifica que tipo de navegador se esta utilizando		
+				if (window.XMLHttpRequest) 
+				{
+					xmlhttp = new XMLHttpRequest();
+				}
+				else
+				{
+					xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+				}
+
+		//Verifica si la conexión se realizó efectivamente	
+				xmlhttp.onreadystatechange=function()
+				{
+					if (xmlhttp.readyState == 4 && xmlhttp.status == 200)  
+					{
+					 document.getElementById("textHint").innerHTML = xmlhttp.responseText;
+					
+				 	}
+				}	
+
+				xmlhttp.open("GET","sugerencias.php?q="+str,true);
+				xmlhttp.send();
+			}	
+
+		</script>
+	</head>
+<body>
+	<h2>Sugerencias</h2>
+
+	<p>Introduce un nombre en la siguiente casilla</p>
+	<form action="">
+		Primer nombre: <input type="text" id="txt1" onkeyup="sugerencias(this.value)">
+	</form>
+
+	<p>Sugerencias: <span id="textHint"></span></p>
+		
+</body>	
+</html>
